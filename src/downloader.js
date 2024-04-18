@@ -285,7 +285,7 @@ const downloadScratch3 = async (projectData, options, progressTarget) => {
   const assets = prepareAssets([...costumes, ...sounds]);
   const filesToAdd = await Promise.all(assets.map(addFile));
 
-  zip.file('project.json', await processJSON('sb3', projectData, options));
+  zip.file('project.json', await processJSON('sb2', projectData, options));
 
   // Add files to the zip at the end so the order will be consistent.
   for (const {path, data} of filesToAdd) {
@@ -301,7 +301,7 @@ const downloadScratch3 = async (projectData, options, progressTarget) => {
  */
 const identifyProjectTypeFromJSON = (projectData) => {
   if (Object.prototype.hasOwnProperty.call(projectData, 'targets')) {
-    return 'sb3';
+    return 'sb2';
   } else if (Object.prototype.hasOwnProperty.call(projectData, 'objName')) {
     return 'sb2';
   }
